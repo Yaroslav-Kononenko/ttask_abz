@@ -1,0 +1,221 @@
+@import '../utils/variables';
+@import '../utils/mixins';
+
+.Forms {
+  width: 328px;
+  margin: 0 auto;
+
+  @include on-tablet {
+    width: 704px;
+  }
+
+  @include on-desktop {
+    width: 904px;
+  }
+
+  &__title {
+    margin: 0 auto 50px;
+  }
+}
+
+.Form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 16px 100px;
+
+  @include on-tablet {
+    width: 380px;
+    margin: 0 auto 100px;
+  }
+
+  @include on-desktop {
+    width: 380px;
+    margin: 0 auto 100px;
+  }
+
+  &__field {
+    box-sizing: border-box;
+    height: 54px;
+    border: 1px solid #7E7E7E;
+    padding: 14px 16px;
+    margin-bottom: 50px;
+    width: 100%;
+    outline: none;
+    border-radius: 4px;
+    font-size: 16px;
+    line-height: 26px;
+    color: #7E7E7E;
+
+    &:focus {
+      color: $colorTextInputActive;
+    }
+  }
+}
+
+.position-subtitle {
+  margin-top: -7px;
+}
+
+.position-list {
+  margin: 11px auto 47px 0;
+  list-style-type: none;
+  text-align: left;
+  padding-left: 0;
+  font-size: 16px;
+  line-height: 26px;
+  color: rgba(0, 0, 0, 0.87);
+
+  &__position {
+    cursor: pointer;
+
+    &::before {
+      content: '';
+      position: relative;
+      top: 6px;
+      width: 20px;
+      height: 20px;
+      border: 1px solid #D0CFCF;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 12px;
+    }
+
+    &:hover:before{
+      border: 1px solid #00BDD3;
+    }
+  }
+}
+
+.File-input {
+  display: none;
+}
+
+.Upload {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  border-left: none;
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    color: black;
+    width: 83px;
+    height: 54px;
+    border-radius: 4px 0 0 4px;
+    cursor: pointer;
+  }
+
+  &__field {
+    padding-left: 16px;
+    border-left: none;
+  }
+}
+
+.selected {
+  &::before {
+    background-image: url(./../../assets/active_ellipse.svg);
+    background-size: 12px 12px;
+    background-position: 4px 4px;
+    background-repeat: no-repeat;
+    border: 1px solid #00BDD3;
+    position: relative;
+    top: 6px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 12px;
+  }
+}
+
+.inactive {
+  color: $colorTextsSecondary;
+  background-color: $colorBgInactiveButton;
+  cursor: no-drop;
+
+  &:hover {
+    background-color: $colorBgInactiveButton;
+  }
+}
+
+.Filled {
+  color: $colorTextInputActive;
+}
+
+.Error {
+  border: 2px solid #CB3D40;
+}
+
+.Upload .Error {
+  border-left: none;
+}
+
+.Name_helper {
+  position: relative;
+  bottom: 46px;
+  right: 16px;
+  font-size: 12px;
+  line-height: 14px;
+  color: $colorPlaceholdersGrey;
+
+  @include on-tablet {
+    right: 60px;
+  }
+
+  @include on-desktop {
+    right: 60px;
+  }
+}
+
+.Phone_helper {
+  text-align-last: left;
+  width: 256px;
+  left: 0px;
+
+  @include on-tablet {
+    left: 0px;
+    width: 346px;
+  }
+
+  @include on-desktop {
+    left: 0px;
+    width: 346px;
+  }
+}
+
+.Email_helper {
+  text-align-last: left;
+  width: 256px;
+  left: 0px;
+
+  @include on-tablet {
+    left: 0px;
+    width: 346px;
+  }
+
+  @include on-desktop {
+    left: 0px;
+    width: 346px;
+  }
+}
+
+.Error_text {
+  color: $colorError;
+}
+
+.Form__img-success {
+  margin-bottom: 100px;
+}
+
+.Img_helper {
+  left: 0;
+
+  @include on-tablet {
+    left: -40px;
+  }
+}

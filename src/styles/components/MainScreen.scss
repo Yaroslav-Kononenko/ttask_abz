@@ -1,0 +1,47 @@
+@import '../utils/variables';
+@import '../utils/mixins';
+
+.MainScreen {
+  background-image: url(./../../assets/MainScreen.webp);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 140px;
+}
+
+.Screen {
+  height: calc(100vh - 60px);
+  min-width: 360px;
+  max-width: 380px;
+  padding: 40px 16px 0;
+  text-align: center;
+
+  @include on-tablet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 16px;
+  }
+
+  &__title {
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 40px;
+    color: $colorTextsSecondary;
+  }
+
+  &__text {
+    color: $colorTextsSecondary;
+    margin-top: 21px;
+    margin-bottom: 32px;
+
+    font-size: 16px;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: center;
+  }
+}

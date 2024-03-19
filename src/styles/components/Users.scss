@@ -1,0 +1,46 @@
+@import '../utils/variables';
+@import '../utils/mixins';
+
+.Users {
+  text-align: center;
+  margin-bottom: 140px;
+
+  &__title {
+    margin: 0 auto;
+    margin-bottom: 50px;
+    width: 328px;
+
+    @include on-tablet {
+      width: fit-content;
+    }
+  
+    @include on-desktop {
+      width: fit-content;
+    }
+  }
+
+  &__cards {
+    display: flex;
+    gap: 20px;
+    width: 328px;
+    margin: 0 auto 50px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    @include on-tablet {
+      gap: 16px;
+      width: 704px;
+    }
+  
+    @include on-desktop {
+      gap: 29px;
+      width: 904px;;
+    }
+
+    @include morethendesktop {
+      gap: 29px;
+      width: 904px;;
+    }
+  }
+}

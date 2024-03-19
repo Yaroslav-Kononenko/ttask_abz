@@ -1,0 +1,33 @@
+.UserCard {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-sizing: border-box;
+  padding: 20px;
+  width: 282px;
+  height: 254px;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #fff;
+  overflow: hidden;
+
+  &__photo {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    margin: auto;
+  }
+
+  &__text {
+    display: block;
+    text-align: center;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    color: rgba(0, 0, 0, 0.87);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+  }
+}
