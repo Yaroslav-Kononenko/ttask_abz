@@ -1,65 +1,17 @@
-.box {
-	display: inline-block;
-	width: 200px;
-	height: 200px;
-	border: 1px solid currentcolor;
-	border-radius: 3px;
-	font-size: 30px;
-	padding: 1em;
-	position: relative;
-	margin-bottom: .25em;
-	vertical-align: top;
-	transition: .3s color, .3s border, .3s transform, .3s opacity;
+@import "../utils/variables";
 
-	&:hover {
-		color: #fff; //#d60b52;
-		background-color: rgba(0,0,0,.1);
-		font-size: 0;
-		padding: 0;
-		border-width: 3px;
-		line-height: 200px;
-		opacity: 1;
-		transform: scale(1.2);
-		z-index: 2;
-		[class*="loader-"] {
-			font-size: 70px;
-			line-height: 200px;
-		}
-	}
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid $colorSelectors;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  animation: spin 1s linear infinite;
 }
 
-.loader-18 {
-	position: relative;
-	&:before,
-	&:after {
-		content: '';
-		display: block;
-		position: absolute;
-		border-radius: 50%;
-		border: .1em solid transparent;
-		border-bottom-color: currentcolor;
-		top: 0;
-		left: 0;
-		animation: 1s loader-18 linear infinite;
-	}
-	&:before {
-		width: 1em;
-		height: 1em;
-	}
-	&:after {
-		width: .8em;
-		height: .8em;
-		top: .1em;
-		left: .1em;
-		animation-direction: reverse;
-	}
-}
-
-@keyframes loader-18 {
-	0% {
-		transform: rotate(0deg);
-	}
-	100% {
-		transform: rotate(360deg);
-	}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

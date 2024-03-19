@@ -14,6 +14,8 @@ import {
   initialPosition,
   initialImgPlaceholder
   } from "../../helpers/inititals.ts";
+import { Loader } from "../Loader";
+
 
 interface ErrorData {
   [key: string]: string[];
@@ -38,6 +40,7 @@ export const Forms: React.FC<Props> = React.memo(({
   const [postStatus, setPostStatus] = useState(false);
   const [imgName, setImgName] = useState(initialImgPlaceholder);
   const [imgSize, setImgSize] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [nameValidation, setNameValidation] = useState<FormValidationType>(initialNameValidData);
   const [emailValidation, setEmailValidation] = useState<FormValidationType>(initialEmailValidData);
@@ -114,6 +117,7 @@ export const Forms: React.FC<Props> = React.memo(({
       formData.append('phone', phone); 
       formData.append('photo', fileField.files[0]);
   
+      setIsLoading(true);
       const request = await postUser(formData, token);
   
       if (request.success) {
@@ -133,6 +137,8 @@ export const Forms: React.FC<Props> = React.memo(({
       }
     } catch (error: any) {
       handleError(error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -283,16 +289,18 @@ export const Forms: React.FC<Props> = React.memo(({
             {imgValidation.hint}
           </span>
           
-          <button 
-            type="submit"
-            className={classnames("button", 
-              {'inactive' : disabled }
-            )}
-            title={disabled? 'You must fill all input fields' : undefined}
-            disabled={disabled}
-          >
-            Sign In
-          </button>
+          {isLoading ? (<Loader />) : ( 
+            <button 
+              type="submit"
+              className={classnames("button", 
+                {'inactive' : disabled }
+              )}
+              title={disabled? 'You must fill all input fields' : undefined}
+              disabled={disabled}
+            >
+              Sign In
+            </button>
+          )}
         </form>
       )}
     </div>
