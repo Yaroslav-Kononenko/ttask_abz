@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { getPostUsersUrl, tokenUrl } from "./base";
+
 export const getUsersList = async (apiUrl: string) => {
   try {
     const response = await fetch(apiUrl);
@@ -12,9 +14,9 @@ export const getUsersList = async (apiUrl: string) => {
   }
 };
 
-export const getToken = async (apiUrl: string) => {
+export const getToken = async () => {
   try {
-    const response = await fetch(apiUrl);
+    const response = await fetch(tokenUrl);
     if (!response.ok) {
       throw new Error(`${response.status} -- ${response.statusText}`);
     }
@@ -25,9 +27,9 @@ export const getToken = async (apiUrl: string) => {
   }
 };
 
-export const postUser = async (apiUrl: string, data: any, token: string) => {
+export const postUser = async (data: any, token: string) => {
   try {
-    const response = await fetch(apiUrl, {
+    const response = await fetch(getPostUsersUrl, {
       method: 'POST',
       body: data,
       headers: {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect } from "react";
 import './../../styles/components/Forms.scss';
 import classnames from "classnames";
@@ -13,9 +14,6 @@ import {
   initialPosition,
   initialImgPlaceholder
   } from "../../helpers/inititals.ts";
-
-const postURL = 'https://frontend-test-assignment-api.abz.agency/api/v1/users';
-const tokenUrl = 'https://frontend-test-assignment-api.abz.agency/api/v1/token';
 
 interface ErrorData {
   [key: string]: string[];
@@ -61,7 +59,7 @@ export const Forms: React.FC<Props> = React.memo(({
   || nameValidation.errorStatus);
 
   useEffect(() => {
-    getToken(tokenUrl)
+    getToken()
       .then(data => {
         setToken(data.token)}); 
   }, [])
@@ -116,7 +114,7 @@ export const Forms: React.FC<Props> = React.memo(({
       formData.append('phone', phone); 
       formData.append('photo', fileField.files[0]);
   
-      const request = await postUser(postURL, formData, token);
+      const request = await postUser(formData, token);
   
       if (request.success) {
         setPostStatus(true);
@@ -128,7 +126,7 @@ export const Forms: React.FC<Props> = React.memo(({
         setUsers(data.users);
         setApi(data.links.next_url.slice(0, -1) + '6');
         
-        const tokenData = await getToken(tokenUrl);
+        const tokenData = await getToken();
         setToken(tokenData.token);
       } else {
         handleError(request);

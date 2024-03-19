@@ -12,7 +12,7 @@ export const UserCard: React.FC<Props> = ({ user }) => (
     <span className='UserCard__text' title={user.name}>{user.name}</span>
     <span className='UserCard__text'>
       <span className='UserCard__text'>{user.position}</span>
-      <span className='UserCard__text' title={user.name}>{user.email}</span>
+      <span className='UserCard__text' title={user.email}>{user.email}</span>
       <span className='UserCard__text'>{user.phone}</span>
     </span>
   </div>

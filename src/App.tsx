@@ -6,12 +6,18 @@ import { Users } from './components/Users';
 import { useEffect, useState } from "react";
 import { getUsersList } from './api/users';
 import { UserDataType } from './react-app-env';
+import { getPostUsersUrl } from './api/base';
 
 function App() {
   const [users, setUsers] = useState<UserDataType[]>([]);
   const [next_api, setApi] = useState('');
   const [apiIs, setApiIs] = useState(true);
-  const base_api = `https://frontend-test-assignment-api.abz.agency/api/v1/users?page=1&count=6`;
+  const usersQueryParams = {
+    page: '1',
+    count: '6',
+  };
+
+  const base_api = `${getPostUsersUrl}?page=${usersQueryParams.page}&count=${usersQueryParams.count}`;
 
   useEffect(() => {
     getUsersList(base_api)
