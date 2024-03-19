@@ -16,11 +16,6 @@ import {
   } from "../../helpers/inititals.ts";
 import { Loader } from "../Loader";
 
-
-interface ErrorData {
-  [key: string]: string[];
-}
-
 type Props = {
   setUsers: (users: UserDataType[]) => void,
   setApi: (next_api: string) => void,
@@ -59,7 +54,8 @@ export const Forms: React.FC<Props> = React.memo(({
   || emailValidation.errorStatus
   || phoneValidation.errorStatus
   || imgValidation.errorStatus
-  || nameValidation.errorStatus);
+  || nameValidation.errorStatus
+  || imgSize === 0);
 
   useEffect(() => {
     getToken()
@@ -95,17 +91,12 @@ export const Forms: React.FC<Props> = React.memo(({
   const handleError = (error: any) => {
     let errorMessage = 'An unexpected error occurred';
   
-    if (error.fails) {
-      const errorData: ErrorData = error.fails;
-      const errorMessages = Object.entries(errorData)
-        .flatMap(([key, errors]) => errors.map(error => `${key}: ${error}`));
-  
-      errorMessage = errorMessages.length > 0 ? errorMessages.join('\n') : 'Validation failed';
+    if (error.message) {
+      errorMessage = `The following error(-s) occurred while submitting the form:\n${error.message}`;
     }
   
     alert(errorMessage);
   };
-  
   
   const submit = async () => {
     try {

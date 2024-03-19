@@ -36,12 +36,16 @@ export const postUser = async (data: any, token: string) => {
         'Token': token,
       }
     });
+
+    const responseData = await response.json();
+
     if (!response.ok) {
-      throw new Error(`${response.status} -- ${await response.json()}`);
+      throw new Error(`${response.status} -- ${responseData.message}`);
     }
-    return await response.json();
+
+    return responseData;
   } catch (error: any) {
-    console.error(`This ONE Error ${error.name} - ${error.message}`);
+    console.error(`Error ${error.name} - ${error.message}`);
     throw error;
   }
 };
